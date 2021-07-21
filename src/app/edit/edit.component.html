@@ -1,0 +1,12 @@
+<h3>Edit new Product</h3>
+<form  (ngSubmit)="editProduct()" >
+  <span>STT <input type="text" name="id_product"  [(ngModel)]="id" ></span>
+  <br>
+  <span>Name <input type="text" name="name_product" [(ngModel)]="name"></span>
+  <br>
+  <span>Pirce<input type="text" name="price_product" [(ngModel)]="price"></span>
+  <br>
+  <span>Description <input type="text" name="price_product" [(ngModel)]="description" ></span>
+
+  <button type="submit">Submit</button>
+</form>

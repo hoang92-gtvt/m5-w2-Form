@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Iproduct} from "../iproduct";
+import {ProductServiceService} from "../product-service.service";
 
 @Component({
   selector: 'app-list',
@@ -8,17 +9,21 @@ import {Iproduct} from "../iproduct";
 })
 export class ListComponent implements OnInit {
   products: Array<Iproduct> =[
-    {id: 1, name: "Iphone11", price: 500, description: "mau xanh, lam, do"},
-    {id: 2, name: "Iphone12", price: 600, description: "mau den, vang, do"}
+
   ];
   product: Iproduct={};
 
-  constructor() { }
+  constructor(private productService: ProductServiceService) {
+    this.products= productService.products;
+  }
 
   ngOnInit(): void {
   }
-  addProduct(){
-    this.products.push(this.product);
+  getProduct(index:number){
+    console.log("onclick");
+    let oldProduct = this.productService.getProduct(index);
+    this.productService.product = oldProduct;
+    console.log(this.productService.product);
   }
 
 }

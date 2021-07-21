@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Iproduct} from "../iproduct";
+import {ProductServiceService} from "../product-service.service";
+import {ListComponent} from "../list/list.component";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-create',
@@ -7,18 +10,29 @@ import {Iproduct} from "../iproduct";
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  id: number=1;
-  name: String ="";
-  price: number=100;
-  description: String ="color";
 
-  product: Iproduct ={};
-  constructor() { }
+  product = new FormGroup({
+    id : new FormControl(),
+    name: new FormControl(),
+    price: new FormControl(),
+    description: new FormControl()
+  })
+
+
+
+  constructor( private productsService:ProductServiceService) {
+
+    }
 
   ngOnInit(): void {
   }
+
   creatProduct(){
-    this.product={id:this.id, name: this.name, price:this.price, description: this.description}
-    console.log(this.product)
+    console.log(this.product.value);
+    let product = this.product.value;
+    this.productsService.addProduct(product);
   }
+
+
+
 }

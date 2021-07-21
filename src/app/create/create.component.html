@@ -1,9 +1,17 @@
 <h3>Creat a new Product</h3>
-<form  (ngSubmit)="creatProduct()" >
-  <span>Id <input type="text" name="id_product" [(ngModel)]="id"></span>
-  <span>Name <input type="text" name="name_product" [(ngModel)]="name"></span>
-  <span>Pirce<input type="text" name="price_product" [(ngModel)]="price"></span>
-  <span>Description <input type="text" name="price_product" [(ngModel)]="description"></span>
+<form  (ngSubmit)="creatProduct()" [formGroup]="product">
+  <span>STT <input type="text" name="id_product"  formControlName="id" ></span>
+  <br>
+  <span>Name <input type="text" name="name_product" formControlName="name" ></span>
+  <br>
+  <span>Pirce<input type="text" name="price_product" formControlName="price" ></span>
+  <br>
+  <span>Description <input type="text" name="price_product" formControlName="description" ></span>
 
-  <button >Submit</button>
+  <br>
+
+
+  <br>
+
+  <button type="submit">Submit</button>
 </form>
